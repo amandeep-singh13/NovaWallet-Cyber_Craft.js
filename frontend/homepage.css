@@ -28,7 +28,7 @@
     margin:0 20px;
 }
 .mainviewpage{
-    background-image: url("1650044455549.jpg"); /* Set the image URL */
+    background-image: url("./images/1650044455549.jpg"); /* Set the image URL */
     background-size: cover; /* Adjust as needed */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
@@ -58,6 +58,7 @@
     margin-top:2px;
 }
 #text{
+    color:rgb(252, 252, 210);
     font-family: 'Times New Roman', Times, serif;
     font-size: 80px;
     text-align: center;
@@ -89,8 +90,8 @@
     margin-top: 10px;
 }
 .getstarted{
-    background-color: red;
-    border:1px solid black;
+    background-color: rgb(252, 252, 210); /* Light Gray Background Color */
+    color: #333; /* Dark Text Color for Contrast */
     width:130px;
     height:41px;
     text-align: center;
@@ -100,12 +101,13 @@
     border-radius: 10px;
     margin-left: 90px;
     margin-right: 50px;
+    cursor:pointer;
 
 
 }
 .learmore{
-    background-color: red;
-    border:1px solid black;
+    background-color: #f0f0f0; /* Light Gray Background Color */
+    color: #333; /* Dark Text Color for Contrast */
     width:130px;
     height:41px;
     text-align: center;
@@ -113,6 +115,7 @@
     align-items: center;
     font-size:25px;
     border-radius: 10px;
+    cursor:pointer;
 }
 #btext{
     display: flex;
@@ -143,9 +146,23 @@
     margin-bottom: 30px;
     font-size: x-large;
 }
+/* consistency made in buttons so that get started apperas first with dark background and learn more is of light theme */
 .button1{
-    background-color: rgb(12, 10, 10);
-    border:1px solid black;
+    background-color: rgb(211, 211, 211);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color:rgb(11, 11, 11);
+    width:130px;
+    height:41px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size:25px;
+    border-radius: 10px;
+    cursor:pointer;
+}
+.button2{
+    background-color: rgb(10, 9, 9);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color:white;
     width:130px;
     height:41px;
@@ -154,18 +171,8 @@
     align-items: center;
     font-size:25px;
     border-radius: 10px;
-}
-.button2{
-    background-color: rgb(220, 216, 216);
-    border:1px solid black;
-    width:130px;
-    height:41px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-size:25px;
-    border-radius: 10px;
-    margin-right:25px
+    margin-right:25px;
+    cursor:pointer;
 }
 .featurecard{
     height: 600px;
@@ -217,7 +224,7 @@
     border-radius: 10px;
     margin-top:10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-
+    cursor:pointer;
 }
 .cardbutton2{
     margin-top:10px;
@@ -230,6 +237,7 @@
     text-align: center;
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    cursor:pointer;
 }
 
 .review{
@@ -253,7 +261,7 @@
     height: 500px;
 }
 .cards{
-    border:1px solid black;
+    /* border removed */
     height: 480px;
     width:310px;
     background-color: rgb(249, 239, 239);
@@ -272,7 +280,7 @@
     color:white;
     background-color: black;
     height: 65px;
-    width: 155px;
+    width: 165px;
     margin-top:40px;
     border-radius: 20px;
     margin-right:10px;
