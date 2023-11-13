@@ -1,0 +1,81 @@
+
+.topnav{
+    margin:0 20px;
+}
+body{
+    margin:0;
+    padding:0;
+    background-image: linear-gradient(to right,rgb(243, 233, 234),rgb(95, 95, 255));
+
+}
+.topbar{
+    height: 40px;
+    width: 100vw;
+    /* background-color: yellow; */
+    /* border:1px solid black; */
+    /* font recom:aerial,2  */
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-family:Arial, Helvetica, sans-serif;
+    color:black;
+    background-color: white;
+}
+
+
+#nova{
+    margin-right: auto;
+    font-size: 30px;
+    margin-left: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:black
+}
+
+.main{
+    margin-left:30%;
+    width:400px;
+}
+.col-md-6{
+    padding-top:10px;
+    max-width:100%;
+
+}
+.col-md-12{
+    padding-top:10px;
+}
+.mb-4{
+    text-align:center;
+    justify-content: center;
+}
+.main{
+    text-align:center;
+}
+.container{
+    background: white;
+    padding-left: 20px;
+    width:40%;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width:700px;
+    overflow:hidden;
+    box-shadow: 2px 2px 5px rgb(10, 10, 10);
+    height:70vh;
+
+
+}
+
+.h1-responsive {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 800;
+    font-size: 50px;
+}
+.text-center {
+    font-weight:500;
+}
+.form-control{
+    background-color: rgb(215, 214, 214);
+}
+#dropdownMenuButton{
+    background-color: rgb(238, 234, 234);
+    color:black
+}
