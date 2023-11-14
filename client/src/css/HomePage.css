@@ -27,6 +27,15 @@
 .topnav{
     margin:0 20px;
 }
+.login-signup{
+    margin:0 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    border-radius: 5px;
+
+}
 .mainviewpage{
     background-image: url("../../public/images/1650044455549.jpg"); /* Set the image URL */
     background-size: cover; /* Adjust as needed */
@@ -190,10 +199,10 @@
     justify-content:space-between;
 }
 
-/* .leftimage{ */
+.leftimage{ 
     /* border:1px solid black; */
     /* background-color: red; */
-/* } */
+ }
 .righttext{
     height: 400px;
     width: 400px;

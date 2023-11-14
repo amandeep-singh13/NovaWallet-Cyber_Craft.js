@@ -1,45 +1,63 @@
-import React from 'react'
-import { Form, Input, Button } from 'antd';
-import { Link } from 'react-router-dom';
-import '../index.css';
+import React, { useState } from 'react';
+import { Form, Input, Button, message } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
+import styles from '../css/Signup.module.css' // Import the styles
+import axios from 'axios';
+import Spinner from '../components/Spinner';
+
 const Register = () => {
-    const onFinish = (values) => {
-        console.log('Received values:', values);
-    };
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  // form submit
+  const onFinish = async (values) => {
+    try {
+      setLoading(true);
+      await axios.post('/users/register', values);
+      message.success('Registration successful');
+      setLoading(false);
+      navigate('/login');
+    } catch (error) {
+      setLoading(false);
+      message.error('Invalid username or password');
+    }
+  };
+
   return (
     <>
-    <div className="form signup">
-        <div className="form-content">
+      
+      <div className={styles.container}>
+        <div className={`${styles.form} show-signup`}>
+          {loading && <Spinner />}
           <header>Signup</header>
           <Form onFinish={onFinish}>
-            <div className="field input-field">
+            <div className={styles.field}>
               <Form.Item
                 name="name"
                 rules={[{ required: true, message: 'Please input your name!' }]}
               >
-                <Input type="name" placeholder="Name" className="input" />
+                <Input type="name" placeholder="Name" />
               </Form.Item>
             </div>
 
-            <div className="field input-field">
+            <div className={styles.field}>
               <Form.Item
                 name="email"
                 rules={[{ required: true, message: 'Please input your email!' }]}
               >
-                <Input type="email" placeholder="Email" className="input" />
+                <Input type="email" placeholder="Email" className={styles.input} />
               </Form.Item>
             </div>
 
-            <div className="field input-field">
+            <div className={`${styles.field} ${styles.inputField}`}>
               <Form.Item
                 name="password"
                 rules={[{ required: true, message: 'Please input your password!' }]}
               >
-                <Input.Password placeholder="Password" className="input" />
+                <Input.Password placeholder="Password" className={styles.input} />
               </Form.Item>
             </div>
 
-            <div className="field input-field">
+            <div className={`${styles.field} ${styles.inputField}`}>
               <Form.Item
                 name="confirmPassword"
                 dependencies={['password']}
@@ -58,28 +76,25 @@ const Register = () => {
                   }),
                 ]}
               >
-                <Input.Password placeholder="Confirm Password" className="input" />
+                <Input.Password placeholder="Confirm Password" className={styles.input} />
               </Form.Item>
             </div>
 
-            <div className="field button-field">
+            <div className={`${styles.field} ${styles.buttonField}`}>
               <Button type="primary" htmlType="submit">
                 Signup
               </Button>
             </div>
           </Form>
-          <div className="form-link">
+          <div className={styles.formLink}>
             <span>
-            Already Have Account? <Link to="/login" className="link login-link">Login</Link>
-
+              Already Have Account? <Link to="/login" className={`${styles.link} ${styles.loginLink}`}>Login</Link>
             </span>
           </div>
         </div>
       </div>
-      
     </>
-  )
-}
+  );
+};
 
-export default Register
-
+export default Register;

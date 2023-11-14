@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import '../css/HomePage.css'; // Import the CSS file
 
 const HomePage = () => {
@@ -23,7 +24,7 @@ const HomePage = () => {
     <div className="topnav">Testimonials</div>
     <div className="topnav">Contact</div>
     <div className="topnav">About Us</div>
-    <div className="topnav">Login/Signup</div>
+    <div className="login-signup"><Link to ="/login"> Login/Signup </Link></div>
   </div>
   {/* Creating the main front image banner */}
   <div className="mainviewpage">
