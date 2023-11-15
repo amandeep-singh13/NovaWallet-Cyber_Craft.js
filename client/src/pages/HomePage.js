@@ -1,8 +1,33 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, {useEffect, useState } from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 import '../css/HomePage.css'; // Import the CSS file
 
 const HomePage = () => {
+  const [loginUser, setLoginUser] = useState('')
+  const navigate = useNavigate(); // Access the navigate function
+
+  useEffect( () =>{
+    const user = JSON.parse(localStorage.getItem('user'))
+    if(user) {
+      setLoginUser(user)
+    }
+  },[] )
+  const handleLogout = () => {
+    // Perform logout logic here
+    // For example, remove the user from localStorage and reset the state
+    localStorage.removeItem('user');
+    setLoginUser('');
+    navigate('/login');
+  };
+  const handleLogin = () => {
+    // Navigate to the login page
+    navigate('/login');
+  };
+
+  const handleSignup = () => {
+    // Navigate to the signup page
+    navigate('/register');
+  };
   return (
     <>
       <div className="wrapper">
@@ -20,11 +45,24 @@ const HomePage = () => {
     <div className="topnav" id="nova">
       NovaWallet
     </div>
-    <div className="topnav">Services</div>
+    <div className="topnav"><Link to="/features" > Services</Link></div>
     <div className="topnav">Testimonials</div>
     <div className="topnav">Contact</div>
     <div className="topnav">About Us</div>
-    <div className="login-signup"><Link to ="/login"> Login/Signup </Link></div>
+    <div className="topnav"> {loginUser && loginUser.name}</div>
+    <div className='login-signup'>
+    {loginUser ? (
+          // User is logged in, show Logout button
+          <button onClick={handleLogout}>Logout</button>
+        ) : (
+          // User is not logged in, show Login/Signup button
+          <div>
+            <button onClick={handleLogin}>Login</button>
+            <button onClick={handleSignup}>Signup</button>
+          </div>
+        )}
+    </div>
+
   </div>
   {/* Creating the main front image banner */}
   <div className="mainviewpage">

@@ -1,10 +1,10 @@
 // initializing or importing express and other modules
-const express = require('express')
-const cors = require('cors')
-const morgan = require('morgan')
-const dotenv = require('dotenv') 
-const colors = require('colors') 
-const connectDb = require('./config/connectDb')
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+const dotenv = require('dotenv');
+const colors = require('colors');
+const connectDb = require('./config/connectDb');
 // config dot env file
 dotenv.config();
 

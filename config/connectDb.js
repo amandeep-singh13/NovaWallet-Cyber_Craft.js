@@ -1,6 +1,6 @@
 // importing mongoose package
-const mongoose = require('mongoose')
-const colors = require('colors')
+const mongoose = require('mongoose');
+const colors = require('colors');
 //function to create database connection
 // making this async by using try catch block
 const connectDb = async () => {
@@ -10,5 +10,5 @@ const connectDb = async () => {
     } catch (error) {
         console.log(`${error}`.bgRed)
     }
-}
+};
 module.exports = connectDb

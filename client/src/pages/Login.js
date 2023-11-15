@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Input, Button, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import "../index.css";
@@ -6,24 +6,33 @@ import axios from "axios";
 import Spinner from "../components/Spinner";
 
 const Login = () => {
-  console.log("hello");
-  const navigate = useNavigate();
+  
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  // form submit
   const onFinish = async (values) => {
-    console.log(values, "hello");
+    console.log(values, "hello1");
     try {
       setLoading(true);
       const { data } = await axios.post("/users/login", values);
       setLoading(false);
       message.success("login success");
-      localStorage.setItem("user", JSON.stringify({ ...data, password: "" }));
-      navigate("/");
+      localStorage.setItem("user", JSON.stringify({ ...data.user, password: "" }));
+      navigate("/features");
     } catch (error) {
       setLoading(false);
       message.error("something went wrong");
     }
   };
-  console.log("hello");
+
+  //prevent for login user
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      navigate("/");
+    }
+  }, [navigate]);
+
+  console.log("hello2");
 
   return (
     <section className="container forms">
@@ -31,7 +40,7 @@ const Login = () => {
       <div className="form login">
         <div className="form-content">
           <header>Login</header>
-          <Form>
+          <Form onFinish={onFinish}>
             <div className="field input-field">
               <Form.Item
                 name="email"
