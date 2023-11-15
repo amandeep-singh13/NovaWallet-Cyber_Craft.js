@@ -1,5 +1,6 @@
 import React, {useEffect, useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
+import {message} from 'antd'
 import '../css/HomePage.css'; // Import the CSS file
 
 const HomePage = () => {
@@ -17,6 +18,7 @@ const HomePage = () => {
     // For example, remove the user from localStorage and reset the state
     localStorage.removeItem('user');
     setLoginUser('');
+    message.success("Logout Successfully");
     navigate('/login');
   };
   const handleLogin = () => {
