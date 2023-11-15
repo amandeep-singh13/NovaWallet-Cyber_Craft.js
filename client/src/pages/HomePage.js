@@ -68,7 +68,7 @@ const HomePage = () => {
   </div>
   {/* Creating the main front image banner */}
   <div className="mainviewpage">
-    <div className="content">
+    <div className="contant">
       <div className="maintitle">
         <div className="heading">
           <pre id="text">

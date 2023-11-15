@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Features from './pages/Features';
+import Transactions from './pages/Transactions';
 function App() {
   return (
     <>
@@ -18,6 +19,11 @@ function App() {
             <Features />
           </ProtectedRoutes>
           } />
+          <Route 
+          path = '/transactions' 
+          element={<ProtectedRoutes>
+            <Transactions/>
+          </ProtectedRoutes>}/>
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
       </Routes>

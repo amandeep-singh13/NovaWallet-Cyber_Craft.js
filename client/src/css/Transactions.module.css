@@ -1,0 +1,28 @@
+* {
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+  
+  }
+.filters{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    box-shadow: 0 0 3px gray;
+
+}
+
+.btn{
+    background-color: rgb(59, 59, 248);
+    padding:7px 5px 8px 5px;
+    border-radius:7px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:azure;
+    box-shadow: 0 0 2px rgb(247, 224, 224);
+
+}
+
+.content {
+    height: 80vh;
+}
