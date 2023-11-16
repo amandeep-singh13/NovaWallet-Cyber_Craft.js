@@ -4,6 +4,8 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Features from './pages/Features';
 import Transactions from './pages/Transactions';
+import ContactUsPage from './pages/ContactUsPage'; 
+import FAQPage from './pages/FAQPage';
 function App() {
   const [bills,setBills] = useState([]);
   const handleAddBill = (newBill) => {
@@ -39,6 +41,8 @@ function App() {
           </ProtectedRoutes>}/>
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/contact' element={<ContactUsPage />} /> 
+        <Route path='/faq' element={<FAQPage />} />
       </Routes>
     </>
   );
@@ -60,10 +64,6 @@ function BillList({ bills }) {
     </div>
   );
 }
-
-
-export default App;
-
 
 
 export default App;

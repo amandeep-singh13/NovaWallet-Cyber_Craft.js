@@ -1,6 +1,5 @@
 import React, {useEffect, useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
-import {message} from 'antd'
 import '../css/HomePage.css'; // Import the CSS file
 
 const HomePage = () => {
@@ -18,7 +17,6 @@ const HomePage = () => {
     // For example, remove the user from localStorage and reset the state
     localStorage.removeItem('user');
     setLoginUser('');
-    message.success("Logout Successfully");
     navigate('/login');
   };
   const handleLogin = () => {
@@ -30,6 +28,7 @@ const HomePage = () => {
     // Navigate to the signup page
     navigate('/register');
   };
+  
   return (
     <>
       <div className="wrapper">
@@ -49,7 +48,9 @@ const HomePage = () => {
     </div>
     <div className="topnav"><Link to="/features" > Services</Link></div>
     <div className="topnav">Testimonials</div>
-    <div className="topnav">Contact</div>
+    <div className="topnav">
+  <Link to="/contact">Contact Us</Link>
+</div>
     <div className="topnav">About Us</div>
     <div className="topnav"> {loginUser && loginUser.name}</div>
     <div className='login-signup'>
@@ -59,8 +60,8 @@ const HomePage = () => {
         ) : (
           // User is not logged in, show Login/Signup button
           <div>
-            <button onClick={handleLogin}>Login</button>
-            <button onClick={handleSignup}>Signup</button>
+            <button onClick={handleLogin} id="loginbutton">Login</button>
+            <button onClick={handleSignup}id="signupbutton">Signup</button>
           </div>
         )}
     </div>
@@ -68,17 +69,17 @@ const HomePage = () => {
   </div>
   {/* Creating the main front image banner */}
   <div className="mainviewpage">
-    <div className="contant">
+    <div className="content">
       <div className="maintitle">
         <div className="heading">
           <pre id="text">
             {"                            "}NOVAWALLET{"\n"}
             {"                            "}TEAM_144{"\n"}
-            {"                        "}
           </pre>
         </div>
       </div>
       <div className="viewparagraph">
+        <br></br>
         Place from where FINANCIAL INDEPENCY BEGINS!!
       </div>
       <div className="viewelements">
@@ -253,8 +254,8 @@ const HomePage = () => {
         />
         <div className="boxname">
           <div id="cardname">
-            <h1>Aryaman</h1>
-            <p>Team_Member</p>
+            <h1 id="smalltext">Aryaman</h1>
+            <p id="smalltext">Team_Member</p>
           </div>
         </div>
       </div>
@@ -274,8 +275,8 @@ const HomePage = () => {
         />
         <div className="boxname">
           <div id="cardname">
-            <h1>Aryaman</h1>
-            <p>Team_Member</p>
+            <h1 id="smalltext">Aryaman</h1>
+            <p id="smalltext">Team_Member</p>
           </div>
         </div>
       </div>
@@ -295,8 +296,8 @@ const HomePage = () => {
         />
         <div className="boxname">
           <div id="cardname">
-            <h1>Aryaman</h1>
-            <p>Team_Member</p>
+            <h1 id="smalltext">Aryaman</h1>
+            <p id="smalltext">Team_Member</p>
           </div>
         </div>
       </div>
@@ -348,8 +349,8 @@ const HomePage = () => {
         />
         <div className="boxname">
           <div id="cardname">
-            <h1>Amandeep</h1>
-            <p>Team_Member</p>
+            <h1 id="smalltext">Amandeep</h1>
+            <p id="smalltext">Team_Member</p>
           </div>
         </div>
       </div>
@@ -369,8 +370,8 @@ const HomePage = () => {
         />
         <div className="boxname">
           <div id="cardname">
-            <h1>Aryaman</h1>
-            <p>Team_Member</p>
+            <h1 id="smalltext">Aryaman</h1>
+            <p id="smalltext">Team_Member</p>
           </div>
         </div>
       </div>
@@ -390,8 +391,8 @@ const HomePage = () => {
         />
         <div className="boxname">
           <div id="cardname">
-            <h1>Aradhya</h1>
-            <p>Team_Member</p>
+            <h1 id="smalltext">Aradhya</h1>
+            <p id="smalltext">Team_Member</p>
           </div>
         </div>
       </div>
