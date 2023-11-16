@@ -137,7 +137,7 @@ const Features = () => {
               Efficiently manage your financial activities with our finance
               software's easy-to-use "Record Daily Transactions" feature.
             </p>
-            <Link to="/" className="btn btn-dark">
+            <Link to="/transactions" className="btn btn-dark">
               Read More
             </Link>
           </div>

@@ -1,6 +1,6 @@
 // importing express module
 const express = require('express');
-const { addTransaction, getAllTransaction } = require('../controllers/transactionCtrl');
+const { addTransaction, getAllTransactions } = require('../controllers/transactionCtrl');
 
 //router object
 const router = express.Router();
@@ -10,6 +10,6 @@ const router = express.Router();
 router.post('/add-transaction', addTransaction)
 
 //get transaction
-router.post('/get-transaction', getAllTransaction )
+router.post('/get-transaction', getAllTransactions )
 
 module.exports = router;

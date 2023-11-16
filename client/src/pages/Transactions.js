@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Select, Modal, message, Table, DatePicker } from 'antd';
+import { UnorderedListOutlined, AreaChartOutlined } from '@ant-design/icons'
 import styles from "../css/Transactions.module.css";
 import Layout from "./../components/Layout/Layout";
 import axios from 'axios';
 import Spinner from '../components/Spinner';
 import moment from 'moment';
+import Analytics from '../components/Analytics';
 
 const { RangePicker } = DatePicker;
 
@@ -13,17 +15,18 @@ const { RangePicker } = DatePicker;
 const Transactions = () => {
     const [showModal, setShowModal] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [allTransaction, setAllTransaction] = useState([]);
+    const [allTransactions, setAllTransactions] = useState([]);
     const [frequency, setFrequency] = useState(['7']); //initially set to 7 days
     const [selectedDate, setSelectedDate] = useState([])
-    const [type, setType] =useState(['all'])
+    const [type, setType] = useState('all')
+    const [viewData, setViewData] =useState('table')
 
     //table data
     const columns = [
         {
             title: 'Date',
             dataIndex: 'date',
-            render : (text) => <span> {moment(text).format('DD-MM-YYYY') } </span>
+            render: (text) => <span> {moment(text).format('DD-MM-YYYY')} </span>,
         },
         {
             title: 'Amount',
@@ -53,17 +56,17 @@ const Transactions = () => {
     useEffect(() => {
         const getAllTransactions = async () => {
             try {
-                const user = JSON.parse(localStorage.getItem('user'))
-                setLoading(true)
-                const res = await axios.post('/transactions/get-transaction',
+                const user = JSON.parse(localStorage.getItem('user'));
+                setLoading(true);
+                const res = await axios.post("/transactions/get-transaction",
                     {
                         userid: user._id,
                         frequency,
                         selectedDate,
                         type,
-                    })
+                    });
                 setLoading(false)
-                setAllTransaction(res.data)
+                setAllTransactions(res.data)
                 console.log(res.data)
             } catch (error) {
                 console.log(error)
@@ -100,10 +103,11 @@ const Transactions = () => {
                         <Select.Option value="365">Last 1 Year</Select.Option>
                         <Select.Option value="custom">Custom</Select.Option>
                     </Select>
-                    {frequency === 'custom' && <RangePicker value={selectedDate}
-                        onChange={(values) => {
-                            setSelectedDate(values)
-                        }} />}
+                    {frequency === 'custom' && (
+                        <RangePicker value={selectedDate}
+                            onChange={(values) => setSelectedDate(values)}
+                        />
+                    )}
                 </div>
 
                 <div>
@@ -112,12 +116,19 @@ const Transactions = () => {
                         <Select.Option value="all">ALL</Select.Option>
                         <Select.Option value="income">INCOME</Select.Option>
                         <Select.Option value="expense">EXPENSE</Select.Option>
-                        
+
                     </Select>
-                    {frequency === 'custom' && <RangePicker value={selectedDate}
-                        onChange={(values) => {
-                            setSelectedDate(values)
-                        }} />}
+                    {frequency === 'custom' && (
+                        <RangePicker
+                            value={selectedDate}
+                            onChange={(values) => setSelectedDate(values)}
+                        />
+                    )}
+                </div>
+
+                <div className='switch-icons'>
+                    <UnorderedListOutlined className={`mx-3 ${viewData === 'table' ? 'active-icon' : 'inactive-icon' }`} onClick={() => setViewData('table') } />
+                    <AreaChartOutlined className={`mx-3 ${viewData === 'analytics' ? 'active-icon' : 'inactive-icon' }`}  onClick={() => setViewData('analytics')} />
                 </div>
 
                 <div>
@@ -127,7 +138,11 @@ const Transactions = () => {
             </div>
 
             <div className={styles.content}>
-                <Table columns={columns} dataSource={allTransaction} />
+                {viewData === 'table' ? 
+                <Table columns={columns} dataSource={allTransactions} />
+                : <Analytics allTransactions = {allTransactions}/> 
+                }
+                
             </div>
             <Modal
                 title="Add Transaction"

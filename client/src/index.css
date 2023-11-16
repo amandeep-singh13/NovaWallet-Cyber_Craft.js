@@ -215,3 +215,25 @@ a.google span{
 
 }
 
+/* transaction page */
+/* .content { */
+    /* height: 100vh; */
+/* } */
+
+/* antd icons */
+.switch-icons{
+    border: 1px solid rgba(96, 91, 91, 0.422);
+    border-radius: 5px;
+    padding: 10px 15px 5px;
+}
+.anticon svg{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.active-icon{
+    color: black;
+}
+.inactive-icon{
+    color: gray;
+}
