@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Select, Modal, message, Table, DatePicker } from 'antd';
-import { UnorderedListOutlined, AreaChartOutlined } from '@ant-design/icons'
+import { Form, Input, Select, Modal, message, Table, DatePicker, Popconfirm } from 'antd';
+import { UnorderedListOutlined, AreaChartOutlined, EditOutlined, DeleteOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 import styles from "../css/Transactions.module.css";
 import Layout from "./../components/Layout/Layout";
 import axios from 'axios';
@@ -19,7 +19,29 @@ const Transactions = () => {
     const [frequency, setFrequency] = useState(['7']); //initially set to 7 days
     const [selectedDate, setSelectedDate] = useState([])
     const [type, setType] = useState('all')
-    const [viewData, setViewData] =useState('table')
+    const [viewData, setViewData] = useState('table')
+    const [editable, setEditable] = useState(null)
+    const [openPopup, setOpenPopup] = useState(false)
+    const [confirmLoading, setConfirmLoading] = useState(false);
+
+    //showing popup for delete
+    const showPopconfirm = () => {
+        setOpenPopup(true);
+    };
+    //handling confirm for delete
+    const handleOk =  (record) => {
+        setConfirmLoading(true);
+        setTimeout(() => {
+            handleDelete(record);
+            setOpenPopup(false);
+            setConfirmLoading(false);
+        }, 2000);
+    };
+    // handling cancel button
+    const handleCancel = () => {
+        setOpenPopup(false);
+        message.info('Cancelled Delete Operation')
+    };
 
     //table data
     const columns = [
@@ -46,13 +68,36 @@ const Transactions = () => {
         },
         {
             title: 'Actions',
+            render: (text, record) => (
+                <div>
+                    <EditOutlined
+                        className='mx-2'
+                        onClick={() => {
+                            setEditable(record)
+                            setShowModal(true)
+
+                        }} />
+                    <Popconfirm
+                        open={openPopup}
+                        title="Delete this transaction"
+                        description="Are you sure you want to delete this transaction?"
+                        icon={<QuestionCircleOutlined style={{ color: 'red' }} />}
+                        onConfirm={() => handleOk(record)}
+                        okButtonProps={{
+                            loading: confirmLoading,
+                        }}
+                        onCancel={() => handleCancel()}
+                    >
+                        <DeleteOutlined
+                            className='text-danger mx-2'
+                            onClick={showPopconfirm} />
+                    </Popconfirm>
+                </div>
+            )
         },
     ];
 
-    //get all transactions
-
-
-    //useEffect Hook
+    //useEffect Hook for adding transactions
     useEffect(() => {
         const getAllTransactions = async () => {
             try {
@@ -76,15 +121,44 @@ const Transactions = () => {
         getAllTransactions();
     }, [frequency, selectedDate, type]);
 
+    
+    //delete handler
+    const handleDelete = async (record) => {
+            try {
+                setLoading(true)
+                await axios.post("/transactions/delete-transaction", { transactionId: record._id })
+                setLoading(false)
+                message.success('Transaction Deleted')
+            } catch (error) {
+                setLoading(false)
+                setOpenPopup(false)
+                console.log(error)
+                message.error('Unable to Delete')
+            }
+    }
+
     //form handling
     const handleSubmit = async (values) => {
         try {
             const user = JSON.parse(localStorage.getItem('user'))
             setLoading(true)
-            await axios.post('/transactions/add-transaction', { ...values, userid: user._id })
-            setLoading(false)
-            message.success('Transaction Added Successfully')
+            if (editable) {
+                await axios.post('/transactions/edit-transaction', {
+                    payload: {
+                        ...values,
+                        userId: user._id
+                    },
+                    transactionId: editable._id
+                });
+                setLoading(false)
+                message.success('Transaction Updated Successfully')
+            } else {
+                await axios.post('/transactions/add-transaction', { ...values, userid: user._id })
+                setLoading(false)
+                message.success('Transaction Added Successfully')
+            }
             setShowModal(false)
+            setEditable(null)
         } catch (error) {
             setLoading(false)
             message.error('Failed to add transaction')
@@ -127,8 +201,8 @@ const Transactions = () => {
                 </div>
 
                 <div className='switch-icons'>
-                    <UnorderedListOutlined className={`mx-3 ${viewData === 'table' ? 'active-icon' : 'inactive-icon' }`} onClick={() => setViewData('table') } />
-                    <AreaChartOutlined className={`mx-3 ${viewData === 'analytics' ? 'active-icon' : 'inactive-icon' }`}  onClick={() => setViewData('analytics')} />
+                    <UnorderedListOutlined className={`mx-3 ${viewData === 'table' ? 'active-icon' : 'inactive-icon'}`} onClick={() => setViewData('table')} />
+                    <AreaChartOutlined className={`mx-3 ${viewData === 'analytics' ? 'active-icon' : 'inactive-icon'}`} onClick={() => setViewData('analytics')} />
                 </div>
 
                 <div>
@@ -138,18 +212,21 @@ const Transactions = () => {
             </div>
 
             <div className={styles.content}>
-                {viewData === 'table' ? 
-                <Table columns={columns} dataSource={allTransactions} />
-                : <Analytics allTransactions = {allTransactions}/> 
+                {viewData === 'table' ?
+                    <Table columns={columns} dataSource={allTransactions} />
+                    : <Analytics allTransactions={allTransactions} />
                 }
-                
+
             </div>
             <Modal
-                title="Add Transaction"
+                title={editable ? 'Edit Transaction' : 'Add Transaction'}
                 open={showModal}
                 onCancel={() => setShowModal(false)}
                 footer={false}>
-                <Form layout="vertical" onFinish={handleSubmit}>
+                <Form layout="vertical"
+                    onFinish={handleSubmit}
+                    initialValues={editable}
+                >
                     <Form.Item label="Amount" name="amount">
                         <Input type="text" />
                     </Form.Item>
