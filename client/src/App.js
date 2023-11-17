@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import Register from './pages/Register';
@@ -6,6 +7,8 @@ import Features from './pages/Features';
 import Transactions from './pages/Transactions';
 import ContactUsPage from './pages/ContactUsPage'; 
 import FAQPage from './pages/FAQPage';
+import Bill from './pages/Bill'
+import AddBillForm from './pages/AddBill';
 function App() {
   const [bills,setBills] = useState([]);
   const handleAddBill = (newBill) => {
