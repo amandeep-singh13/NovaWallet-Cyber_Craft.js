@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Input, Button, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import "../index.css";
+import styles from '../css/Signup.module.css';
 import axios from "axios";
 import Spinner from "../components/Spinner";
 
@@ -35,59 +35,59 @@ const Login = () => {
   console.log("hello2");
 
   return (
-    <section className="container forms">
-      {loading && <Spinner />}
-      <div className="form login">
-        <div className="form-content">
-          <header>Login</header>
-          <Form onFinish={onFinish}>
-            <div className="field input-field">
-              <Form.Item
-                name="email"
-                rules={[
-                  { required: true, message: "Please input your email!" },
-                ]}
-              >
-                <Input type="email" placeholder="Email" className="input" />
-              </Form.Item>
-            </div>
-
-            <div className="field input-field">
-              <Form.Item
-                name="password"
-                rules={[
-                  { required: true, message: "Please input your password!" },
-                ]}
-              >
-                <Input.Password placeholder="Password" className="input" />
-              </Form.Item>
-            </div>
-
-            <div className="form-link">
-              <Link to='/' className="forgot-pass">
-                Forget password?
-              </Link>
-            </div>
-
-            <div className="field button-field">
-              <Button type="primary" htmlType="submit" onClick={onFinish}>
-                Login
-              </Button>
-            </div>
-          </Form>
-          <div className="form-link">
-            <span>
-              Don't have an account{" "}
-              <Link to="/register" className="link signup-link">
-                Signup
-              </Link>
-            </span>
-          </div>
+    <section className={`${styles.container} ${styles.forms}`}>
+  {loading && <Spinner />}
+  <div className={`${styles.form} ${styles.login}`}>
+    <div className={styles['form-content']}>
+      <header>Login</header>
+      <Form onFinish={onFinish}>
+        <div className={`${styles.field} ${styles['input-field']}`}>
+          <Form.Item
+            name="email"
+            rules={[
+              { required: true, message: "Please input your email!" },
+            ]}
+          >
+            <Input type="email" placeholder="Email" className={styles.input} />
+          </Form.Item>
         </div>
-      </div>
 
-      <div className="line"></div>
-    </section>
+        <div className={`${styles.field} ${styles['input-field']}`}>
+          <Form.Item
+            name="password"
+            rules={[
+              { required: true, message: "Please input your password!" },
+            ]}
+          >
+            <Input.Password placeholder="Password" className={styles.input} />
+          </Form.Item>
+        </div>
+
+        <div className={styles['form-link']}>
+          <Link to='/' className={styles['forgot-pass']}>
+            Forget password?
+          </Link>
+        </div>
+
+        <div className={`${styles.field} ${styles['button-field']}`}>
+          <Button type="primary" htmlType="submit">
+            Login
+          </Button>
+        </div>
+      </Form>
+      <div className={styles['form-link']}>
+        <span>
+          Don't have an account{' '}
+          <Link to="/register" className={`${styles.link} ${styles['signup-link']}`}>
+            Signup
+          </Link>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div className={styles.line}></div>
+</section>
   );
 };
 
