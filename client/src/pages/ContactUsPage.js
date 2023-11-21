@@ -3,7 +3,7 @@ import styles from "../css/ContactUsPage.module.css";
 
 const ContactUsPage = () => {
   return (
-    <>
+    <div className={styles.wrapper}>
   <div className={styles.topbar}>
     {/* Your topbar content goes here */}
   </div>
@@ -51,7 +51,7 @@ const ContactUsPage = () => {
       </div>
     </div>
   </div>
-</>
+</div>
 
 
   );

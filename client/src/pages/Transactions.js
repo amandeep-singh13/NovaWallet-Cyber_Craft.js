@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Form, Input, Select, Modal, message, Table, DatePicker, Popconfirm } from 'antd';
 import { UnorderedListOutlined, AreaChartOutlined, EditOutlined, DeleteOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 import styles from "../css/Transactions.module.css";
@@ -7,12 +7,18 @@ import axios from 'axios';
 import Spinner from '../components/Spinner';
 import moment from 'moment';
 import Analytics from '../components/Analytics';
+import BarChart from '../components/Charts/BarChart';
+import LineChart from '../components/Charts/LineChart';
+import PieChart from '../components/Charts/PieChart';
+
 
 const { RangePicker } = DatePicker;
 
 
 
 const Transactions = () => {
+
+    
     const [showModal, setShowModal] = useState(false);
     const [loading, setLoading] = useState(false);
     const [allTransactions, setAllTransactions] = useState([]);
@@ -23,8 +29,8 @@ const Transactions = () => {
     const [editable, setEditable] = useState(null)
     const [openPopup, setOpenPopup] = useState(null)
     const [confirmLoading, setConfirmLoading] = useState(false);
-
-    var a;
+    const [viewMode, setViewMode] = useState('progress')
+    
     //handling confirm for delete
     const handleOk = (record) => {
         setConfirmLoading(true);
@@ -81,11 +87,10 @@ const Transactions = () => {
                             onClick={() => {
                                 setEditable(record)
                                 setShowModal(true)
-                                console.log(a)
 
                             }} />
                         <Popconfirm
-                            open={ openPopup && openPopup._id === record._id }
+                            open={openPopup && openPopup._id === record._id}
                             title="Delete this transaction"
                             description="Are you sure you want to delete this transaction?"
                             icon={<QuestionCircleOutlined style={{ color: 'red' }} />}
@@ -97,8 +102,7 @@ const Transactions = () => {
                         >
                             <DeleteOutlined
                                 className='text-danger mx-2'
-                                onClick={() => 
-                                {   
+                                onClick={() => {
                                     setOpenPopup(record)
                                 }} />
                         </Popconfirm>
@@ -108,29 +112,31 @@ const Transactions = () => {
         },
     ];
 
+    const getAllTransaction = useCallback(async () => {
+        try {
+            const user = JSON.parse(localStorage.getItem('user'));
+            setLoading(true);
+            const res = await axios.post("/transactions/get-transaction",
+                {
+                    userid: user._id,
+                    frequency,
+                    selectedDate,
+                    type,
+                });
+            setLoading(false)
+            setAllTransactions(res.data)
+            console.log(res.data)
+        } catch (error) {
+            console.log(error)
+            message.error('Fetch Issue with Transaction Data')
+        }
+    }, [frequency, selectedDate, type]
+    )
     //useEffect Hook for adding transactions
     useEffect(() => {
-        const getAllTransactions = async () => {
-            try {
-                const user = JSON.parse(localStorage.getItem('user'));
-                setLoading(true);
-                const res = await axios.post("/transactions/get-transaction",
-                    {
-                        userid: user._id,
-                        frequency,
-                        selectedDate,
-                        type,
-                    });
-                setLoading(false)
-                setAllTransactions(res.data)
-                console.log(res.data)
-            } catch (error) {
-                console.log(error)
-                message.error('Fetch Issue with Transaction Data')
-            }
-        }
-        getAllTransactions();
-    }, [frequency, selectedDate, type]);
+
+        getAllTransaction();
+    }, [getAllTransaction]);
 
 
     //delete handler
@@ -140,6 +146,7 @@ const Transactions = () => {
             await axios.post("/transactions/delete-transaction", { transactionId: record._id })
             setLoading(false)
             message.success('Transaction Deleted')
+            getAllTransaction();
         } catch (error) {
             setLoading(false)
             setOpenPopup(false)
@@ -170,11 +177,30 @@ const Transactions = () => {
             }
             setShowModal(false)
             setEditable(null)
+            getAllTransaction();
         } catch (error) {
             setLoading(false)
             message.error('Failed to add transaction')
         }
     }
+
+    // Render the appropriate chart based on the selected viewMode
+    const renderChart = () => {
+        switch (viewMode) {
+            case 'progress':
+                return <Analytics allTransactions={allTransactions} />;
+            case 'barchart':
+                return <BarChart allTransactions={allTransactions} />;
+            case 'linechart':
+                return <LineChart />;
+            case 'piechart':
+                return <PieChart />;
+
+            default:
+                return null; // or a default component if no match
+        }
+    };
+
     return (
         <Layout>
             {loading && <Spinner />}
@@ -216,6 +242,19 @@ const Transactions = () => {
                         <UnorderedListOutlined className={`mx-3 ${viewData === 'table' ? 'active-icon' : 'inactive-icon'}`} onClick={() => setViewData('table')} />
                         <AreaChartOutlined className={`mx-3 ${viewData === 'analytics' ? 'active-icon' : 'inactive-icon'}`} onClick={() => setViewData('analytics')} />
                     </div>
+                    {(viewData === 'analytics') && (
+
+                        <div>
+                            <h6>Select View-Mode</h6>
+                            <Select value={viewMode} onChange={(values) => setViewMode(values)}>
+                                <Select.Option value="progress">PROGRESS</Select.Option>
+                                <Select.Option value="barchart">BAR CHART</Select.Option>
+                                <Select.Option value="piechart">PIE CHART</Select.Option>
+                                <Select.Option value="linechart">LINE CHART</Select.Option>
+                            </Select>
+                        </div>
+                    )
+                    }
 
                     <div>
                         <button className={`${styles.btn} ${styles['btn-primary']}`} onClick={() => setShowModal(true)}>Add New</button>
@@ -226,7 +265,7 @@ const Transactions = () => {
                 <div className={styles.content} >
                     {viewData === 'table' ?
                         <Table columns={columns} dataSource={allTransactions} />
-                        : <Analytics allTransactions={allTransactions} />
+                        : renderChart(viewMode)
                     }
 
                 </div>

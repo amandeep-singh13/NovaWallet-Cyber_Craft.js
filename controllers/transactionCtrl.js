@@ -28,7 +28,7 @@ const getAllTransactions = async (req,res) => {
 
 const editTransaction = async (req, res) => {
     try {
-        await transactionModel.findOneAndUpdate(
+        await transactionModel.findByIdAndUpdate(
             { _id:req.body.transactionId },
             req.body.payload
         );

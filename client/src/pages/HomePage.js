@@ -40,10 +40,10 @@ const HomePage = () => {
         alt="..."
         height="30px"
         width="30px"
-        id="navimage"
+        id={styles.navimage}
       />
     </div>
-    <div className={styles.topnav} id="nova">
+    <div className={styles.topnav} id={styles.nova}>
       NovaWallet
     </div>
     <div className={styles.topnav}><Link to="/features" > Services</Link></div>
@@ -60,8 +60,8 @@ const HomePage = () => {
         ) : (
           // User is not logged in, show Login/Signup button
           <div>
-            <button onClick={handleLogin} id="loginbutton">Login</button>
-            <button onClick={handleSignup}id="signupbutton">Signup</button>
+            <button onClick={handleLogin} id={styles.loginbutton}>Login</button>
+            <button onClick={handleSignup}id={styles.signupbutton}>Signup</button>
           </div>
         )}
     </div>
@@ -72,7 +72,7 @@ const HomePage = () => {
     <div className={styles.content}>
       <div className={styles.maintitle}>
         <div className={styles.heading}>
-          <pre id="text">
+          <pre id={styles.text}>
             {"                            "}NOVAWALLET{"\n"}
             {"                            "}TEAM_144{"\n"}
           </pre>
@@ -85,10 +85,10 @@ const HomePage = () => {
       <div className={styles.viewelements}>
         <div className={styles.button}>
           <div className={styles.getstarted}>
-            <p id="btext">Get Started</p>
+            <p id={styles.btext}>Get Started</p>
           </div>
           <div className={styles.learmore}>
-            <p id="btext">Learn More</p>
+            <p id={styles.btext}>Learn More</p>
           </div>
         </div>
       </div>
@@ -101,10 +101,10 @@ const HomePage = () => {
     </div>
     <div className={styles.userbutton}>
       <div className={styles.button2}>
-        <p id="btext">Get Started</p>
+        <p id={styles.btext}>Get Started</p>
       </div>
       <div className={styles.button1}>
-        <p id="btext">Learn More</p>
+        <p id={styles.btext}>Learn More</p>
       </div>
     </div>
   </div>
@@ -119,7 +119,7 @@ const HomePage = () => {
           alt="..."
           height="450px"
           width="500px"
-          id="imageleft"
+          id={styles.imageleft}
         />
       </div>
       <div className={styles.righttext}>
@@ -134,10 +134,10 @@ const HomePage = () => {
         </p>
         <div className={styles.userbutton}>
           <div className={styles.cardbutton2}>
-            <p id="btext">Get Started</p>
+            <p id={styles.btext}>Get Started</p>
           </div>
           <div className={styles.cardbutton1}>
-            <p id="btext">Learn More</p>
+            <p id={styles.btext}>Learn More</p>
           </div>
         </div>
       </div>
@@ -157,10 +157,10 @@ const HomePage = () => {
         </p>
         <div className={styles.userbutton}>
           <div className={styles.cardbutton2}>
-            <p id="btext">Get Started</p>
+            <p id={styles.btext}>Get Started</p>
           </div>
           <div className={styles.cardbutton1}>
-            <p id="btext">Learn More</p>
+            <p id={styles.btext}>Learn More</p>
           </div>
         </div>
       </div>
@@ -170,7 +170,7 @@ const HomePage = () => {
           alt="..."
           height="450px"
           width="500px"
-          id="imageleft"
+          id={styles.imageleft}
         />
       </div>
     </div>
@@ -184,7 +184,7 @@ const HomePage = () => {
           alt="..."
           height="450px"
           width="500px"
-          id="imageleft"
+          id={styles.imageleft}
         />
       </div>
       <div className={styles.righttext}>
@@ -197,10 +197,10 @@ const HomePage = () => {
         </p>
         <div className={styles.userbutton}>
           <div className={styles.cardbutton2}>
-            <p id="btext">Get Started</p>
+            <p id={styles.btext}>Get Started</p>
           </div>
           <div className={styles.cardbutton1}>
-            <p id="btext">Learn More</p>
+            <p id={styles.btext}>Learn More</p>
           </div>
         </div>
       </div>
@@ -220,10 +220,10 @@ const HomePage = () => {
         </p>
         <div className={styles.userbutton}>
           <div className={styles.cardbutton2}>
-            <p id="btext">Get Started</p>
+            <p id={styles.btext}>Get Started</p>
           </div>
           <div className={styles.cardbutton1}>
-            <p id="btext">Learn More</p>
+            <p id={styles.btext}>Learn More</p>
           </div>
         </div>
       </div>
@@ -233,7 +233,7 @@ const HomePage = () => {
           alt="..."
           height="450px"
           width="500px"
-          id="imageleft"
+          id={styles.imageleft}
         />
       </div>
     </div>
@@ -250,16 +250,16 @@ const HomePage = () => {
           alt="..."
           height="120px"
           width="120px"
-          id="cardimage"
+          id={styles.cardimage}
         />
         <div className={styles.boxname}>
-          <div id="cardname">
-            <h1 id="smalltext">Aryaman</h1>
-            <p id="smalltext">Team_Member</p>
+          <div id={styles.cardname}>
+            <h1 id={styles.smalltext}>Aryaman</h1>
+            <p id={styles.smalltext}>Team_Member</p>
           </div>
         </div>
       </div>
-      <div id="founderinfo">
+      <div id={styles.founderinfo}>
         TeamMate_1 Aryaman from second year computer science and engineering
         mnnit allahabad
       </div>
@@ -271,16 +271,16 @@ const HomePage = () => {
           alt="..."
           height="120px"
           width="120px"
-          id="cardimage"
+          id={styles.cardimage}
         />
         <div className={styles.boxname}>
-          <div id="cardname">
-            <h1 id="smalltext">Aryaman</h1>
-            <p id="smalltext">Team_Member</p>
+          <div id={styles.cardname}>
+            <h1 id={styles.smalltext}>Aryaman</h1>
+            <p id={styles.smalltext}>Team_Member</p>
           </div>
         </div>
       </div>
-      <div id="founderinfo">
+      <div id={styles.founderinfo}>
         TeamMate_1 Aryaman from second year computer science and engineering
         mnnit allahabad
       </div>
@@ -292,16 +292,16 @@ const HomePage = () => {
           alt="..."
           height="120px"
           width="120px"
-          id="cardimage"
+          id={styles.cardimage}
         />
         <div className={styles.boxname}>
-          <div id="cardname">
-            <h1 id="smalltext">Aryaman</h1>
-            <p id="smalltext">Team_Member</p>
+          <div id={styles.cardname}>
+            <h1 id={styles.smalltext}>Aryaman</h1>
+            <p id={styles.smalltext}>Team_Member</p>
           </div>
         </div>
       </div>
-      <div id="founderinfo">
+      <div id={styles.founderinfo}>
         TeamMate_1 Aryaman from second year computer science and engineering
         mnnit allahabad
       </div>
@@ -314,10 +314,10 @@ const HomePage = () => {
       <h1>Trusted by</h1>
     </div>
     <div className={styles.companies}>
-      <img src="./images/image-removebg-preview (6).png" alt="..." id="companyimages" />
-      <img src="./images/PayPal.svg-removebg-preview.png" alt="..." id="companyimage2" />
-      <img src="./images/Forbes.png" alt="..." id="companyimages3" />
-      <img src="./images/Razorpay.png" alt="..." id="companyimages" />
+      <img src="./images/image-removebg-preview (6).png" alt="..." id={styles.companyimages} />
+      <img src="./images/PayPal.svg-removebg-preview.png" alt="..." id={styles.companyimage2} />
+      <img src="./images/Forbes.png" alt="..." id={styles.companyimages3} />
+      <img src="./images/Razorpay.png" alt="..." id={styles.companyimages} />
     </div>
   </div>
   {/* Companies trusting block completed */}
@@ -328,10 +328,10 @@ const HomePage = () => {
     </div>
     <div className={styles.userbutton}>
       <div className={styles.button2}>
-        <p id="btext">Get Started</p>
+        <p id={styles.btext}>Get Started</p>
       </div>
       <div className={styles.button1}>
-        <p id="btext">Learn More</p>
+        <p id={styles.btext}>Learn More</p>
       </div>
     </div>
   </div>
@@ -345,16 +345,16 @@ const HomePage = () => {
           alt="..."
           height="120px"
           width="120px"
-          id="cardimage"
+          id={styles.cardimage}
         />
         <div className={styles.boxname}>
-          <div id="cardname">
-            <h1 id="smalltext">Amandeep</h1>
-            <p id="smalltext">Team_Member</p>
+          <div id={styles.cardname}>
+            <h1 id={styles.smalltext}>Amandeep</h1>
+            <p id={styles.smalltext}>Team_Member</p>
           </div>
         </div>
       </div>
-      <div id="founderinfo">
+      <div id={styles.founderinfo}>
         TeamMate_1: Amandeep Singh from Second year, Computer Science and
         Engineering, MNNIT Allahabad
       </div>
@@ -366,16 +366,16 @@ const HomePage = () => {
           alt="..."
           height="120px"
           width="120px"
-          id="cardimage"
+          id={styles.cardimage}
         />
         <div className={styles.boxname}>
-          <div id="cardname">
-            <h1 id="smalltext">Aryaman</h1>
-            <p id="smalltext">Team_Member</p>
+          <div id={styles.cardname}>
+            <h1 id={styles.smalltext}>Aryaman</h1>
+            <p id={styles.smalltext}>Team_Member</p>
           </div>
         </div>
       </div>
-      <div id="founderinfo">
+      <div id={styles.founderinfo}>
         TeamMate_2: Aryaman from Second year, Computer Science and Engineering,
         MNNIT Allahabad
       </div>
@@ -387,16 +387,16 @@ const HomePage = () => {
           alt="..."
           height="120px"
           width="120px"
-          id="cardimage"
+          id={styles.cardimage}
         />
         <div className={styles.boxname}>
-          <div id="cardname">
-            <h1 id="smalltext">Aradhya</h1>
-            <p id="smalltext">Team_Member</p>
+          <div id={styles.cardname}>
+            <h1 id={styles.smalltext}>Aradhya</h1>
+            <p id={styles.smalltext}>Team_Member</p>
           </div>
         </div>
       </div>
-      <div id="founderinfo">
+      <div id={styles.founderinfo}>
         TeamMate_3: Aradhya from Second year, Computer Science and Engineering,
         MNNIT Allahabad
       </div>
@@ -420,10 +420,10 @@ const HomePage = () => {
     </div>
     <div className={styles.userbutton}>
       <div className={styles.button2}>
-        <p id="btext">Get Started</p>
+        <p id={styles.btext}>Get Started</p>
       </div>
       <div className={styles.button1}>
-        <p id="btext">Learn More</p>
+        <p id={styles.btext}>Learn More</p>
       </div>
     </div>
   </div>
