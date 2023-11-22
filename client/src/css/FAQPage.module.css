@@ -41,7 +41,7 @@
     cursor:pointer;
 }
 .container .accordion-container .accordion.active .accordion-heading{
-    background: rgb(3, 3, 65);
+    background: rgb(125, 125, 252);
 }
 .container .accordion-container .accordion.active .accordion-heading h3{
      color: white;
@@ -76,16 +76,20 @@
 }
 
 .container .accordion-container .accordion .accordion-content{
-    padding:15px 20px;
+    padding:10px 15px;
     border:2px solid black;
     font-size:15px;
     background: white;
+    gap: 10px;
     color:black;
     border-top: 0;
-    display:none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     animation:animate .2s linear backwards;
     line-height: 1.5;
     transform-origin: top;
+    border-radius:5px;
 }
 
 @keyframes animate {

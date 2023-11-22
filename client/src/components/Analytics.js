@@ -134,7 +134,6 @@ const Analytics = ({ allTransactions }) => {
                                         transaction.category === category
                                 )
                                 .reduce((acc, transaction) => acc + transaction.amount, 0)
-                                console.log(amount)
                             return (
                                 amount > 0 && (
                                     <div className="card m-4">
