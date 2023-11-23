@@ -3,11 +3,18 @@
     padding: 0;
     box-sizing: border-box;
 }*
-.wrapper{
+.wrapper.light{
     position: relative;
     height: 100vh;
     width: 100vw;
     background-image: linear-gradient(to right,rgb(243, 233, 234),rgb(95, 95, 255));
+    overflow: auto;
+}
+.wrapper.dark{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-image: black;
     overflow: auto;
 }
 .topbar{
@@ -21,7 +28,22 @@
 }
 #nova{
     margin-right: auto;
+    color:black;
+
 }
+.toggleButton {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+
 .topnav{
     margin:0 20px;
 }

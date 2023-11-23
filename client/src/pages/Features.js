@@ -1,9 +1,16 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Layout from '../components/Layout/Layout';
+import { useTheme } from '../components/Layout/Theme';
 
 const Features = () => {
+  const { theme } = useTheme(); // Using useTheme hook to access the theme
+  const backgroundStyle =
+    theme === "light"
+      ? "linear-gradient(to right, rgb(243, 233, 234), rgb(101, 101, 221))"
+      : "linear-gradient(to right, black, #232323)";
   return (
-    <>
+    <Layout theme={'$theme'}>
       <div
   style={{
     backgroundImage:
@@ -188,7 +195,7 @@ const Features = () => {
   {/* features card end */}
 </div>
 
-    </>
+    </Layout>
   )
 }
 

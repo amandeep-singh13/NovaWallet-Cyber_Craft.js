@@ -1,8 +1,12 @@
 import React, {useEffect, useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import styles from '../css/HomePage.module.css'; // Import the CSS file
+import Layout from '../components/Layout/Layout';
+import { useTheme } from '../components/Layout/Theme';
+
 
 const HomePage = () => {
+  const {theme,toggleTheme} = useTheme();
   const [loginUser, setLoginUser] = useState('')
   const navigate = useNavigate(); // Access the navigate function
 
@@ -30,9 +34,13 @@ const HomePage = () => {
   };
   
   return (
-    <>
-      <div className={styles.wrapper}>
+    <Layout theme={theme} toggleTheme={toggleTheme}>
+      <div className={`${styles.wrapper} ${theme}`}>
   {/* This is being used to create the top navigation bar of the website */}
+  <button onClick={toggleTheme} className={styles.toggleButton}>
+          click
+        </button>
+
   <div className={styles.topbar}>
     <div className={styles.topnav}>
       <img
@@ -47,11 +55,11 @@ const HomePage = () => {
       NovaWallet
     </div>
     <div className={styles.topnav}><Link to="/features" > Services</Link></div>
-    <div className={styles.topnav}>Testimonials</div>
+    <div className={styles.topnav}> <Link to="/">Testimonials</Link></div>
     <div className={styles.topnav}>
   <Link to="/contact">Contact Us</Link>
 </div>
-    <div className={styles.topnav}>About Us</div>
+    <div className={styles.topnav}> <Link to= "/">About Us</Link></div>
     <div className={styles.topnav}> {loginUser && loginUser.name}</div>
     <div className={styles['login-signup']}>
     {loginUser ? (
@@ -63,6 +71,7 @@ const HomePage = () => {
             <button onClick={handleLogin} id={styles.loginbutton}>Login</button>
             <button onClick={handleSignup}id={styles.signupbutton}>Signup</button>
           </div>
+          
         )}
     </div>
 
@@ -429,7 +438,7 @@ const HomePage = () => {
   </div>
 </div>
 
-    </>
+    </Layout>
   )
 }
 

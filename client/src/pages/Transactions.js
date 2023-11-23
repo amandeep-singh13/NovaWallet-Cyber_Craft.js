@@ -10,6 +10,8 @@ import Analytics from '../components/Analytics';
 import BarChart from '../components/Charts/BarChart';
 import LineChart from '../components/Charts/LineChart';
 import PieChart from '../components/Charts/PieChart';
+import { useTheme } from '../components/Layout/Theme';
+
 
 
 const { RangePicker } = DatePicker;
@@ -17,7 +19,6 @@ const { RangePicker } = DatePicker;
 
 
 const Transactions = () => {
-
     
     const [showModal, setShowModal] = useState(false);
     const [loading, setLoading] = useState(false);

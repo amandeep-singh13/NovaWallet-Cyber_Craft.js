@@ -1,0 +1,20 @@
+.layout {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .light {
+    background-color: #f3f3f3;
+    color: #151414;
+  }
+  
+  .dark {
+    background-color: #272626;
+    color: #fff;
+  }
+  
+  header {
+    /* Header styles */
+    padding: 1rem;
+    color: black;
+  }
+  

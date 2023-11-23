@@ -4,8 +4,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from '../css/Signup.module.css' // Import the styles
 import axios from 'axios';
 import Spinner from '../components/Spinner';
+import Layout from '../components/Layout/Layout';
+import { useTheme } from '../components/Layout/Theme';
 
 const Register = () => {
+  const { theme } = useTheme(); // Using useTheme hook to access the theme
+  const backgroundStyle =
+    theme === "light"
+      ? "linear-gradient(to right, rgb(243, 233, 234), rgb(101, 101, 221))"
+      : "linear-gradient(to right, black, #232323)";
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   // form submit
@@ -29,9 +36,9 @@ const Register = () => {
     }
   }, [navigate]);
   return (
-    <>
+    <Layout theme={'$theme'}>
       
-      <div className={styles.container}>
+      <div className={styles.container} style={{ background: backgroundStyle }} >
         <div className={`${styles.form} show-signup`}>
           {loading && <Spinner />}
           <header>Signup</header>
@@ -99,7 +106,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

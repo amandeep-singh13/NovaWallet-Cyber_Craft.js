@@ -7,15 +7,18 @@ import Features from './pages/Features';
 import Transactions from './pages/Transactions';
 import ContactUsPage from './pages/ContactUsPage'; 
 import FAQPage from './pages/FAQPage';
-import Bill from './pages/Bill'
+import Bill from './pages/Bill';
 import AddBillForm from './pages/AddBill';
+import Layout from './components/Layout/Layout';
+import ThemeProvider from './components/Layout/Theme';
 function App() {
+  const [theme,setTheme] = useState('light');
   const [bills,setBills] = useState([]);
   const handleAddBill = (newBill) => {
     setBills([...bills,{id: bills.length+1, ...newBill}])
   }
   return (
-    <>
+    <ThemeProvider theme={theme} setTheme={setTheme}>
       <Routes>
       <Route path="/Bills" element={<BillList bills={bills} />} />
       <Route
@@ -24,13 +27,9 @@ function App() {
       />
         
         
-        <Route path="/Bill" element ={<Bill/>}></Route>
+        
 
-        <Route
-          path='/'
-          element={
-            <HomePage />
-          } />
+        <Route  path='/'element={<HomePage/>} />
           <Route
           path='/features'
           element={<ProtectedRoutes>
@@ -44,10 +43,13 @@ function App() {
           </ProtectedRoutes>}/>
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/contact' element={<ContactUsPage />} /> 
+        <Route
+          path="/contact"
+          element={<ContactUsPage />}
+        />
         <Route path='/faq' element={<FAQPage />} />
       </Routes>
-    </>
+      </ThemeProvider>
   );
 }
 export function ProtectedRoutes(props) {

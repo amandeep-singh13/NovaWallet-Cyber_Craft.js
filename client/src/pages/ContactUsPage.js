@@ -1,9 +1,18 @@
 import React from 'react';
 import styles from "../css/ContactUsPage.module.css"; 
+import Layout from '../components/Layout/Layout';
+import { useTheme } from '../components/Layout/Theme';
 
 const ContactUsPage = () => {
+  const { theme } = useTheme(); // Using useTheme hook to access the theme
+  const backgroundStyle =
+    theme === "light"
+      ? "linear-gradient(to right, rgb(243, 233, 234), rgb(101, 101, 221))"
+      : "linear-gradient(to right, black, #232323)";
   return (
-    <div className={styles.wrapper}>
+    <Layout theme={'$theme'}>
+    <div className={styles.wrapper} style={{ background: backgroundStyle }}>
+
   <div className={styles.topbar}>
     {/* Your topbar content goes here */}
   </div>
@@ -52,6 +61,7 @@ const ContactUsPage = () => {
     </div>
   </div>
 </div>
+</Layout>
 
 
   );

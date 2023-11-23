@@ -1,8 +1,16 @@
 import React from 'react';
 import styles from '../css/FAQPage.module.css'; // Import the CSS file
 import { Collapse } from 'antd';
+import Layout from '../components/Layout/Layout';
+import { useTheme } from '../components/Layout/Theme';
+
 
 const FAQPage = () => {
+  const { theme } = useTheme(); // Using useTheme hook to access the theme
+  const backgroundStyle =
+    theme === "light"
+      ? "linear-gradient(to right, rgb(243, 233, 234), rgb(101, 101, 221))"
+      : "linear-gradient(to right, black, #232323)";
   const items = [
     {
       key: '1',
@@ -176,8 +184,8 @@ const FAQPage = () => {
     }
   ]
   return (
-
-    <div className={styles.wrapper}>
+    <Layout theme={'$theme'}>
+    <div className={styles.wrapper} style={{ background: backgroundStyle }}>
       <div className={styles.container}>
         <h1 className={styles.heading}>Frequently Asked Questions (FAQs)</h1>
         <div className={styles['accordion-container']}>
@@ -189,6 +197,7 @@ const FAQPage = () => {
         </div>
       </div>
     </div>
+    </Layout>
   );
 }
 
