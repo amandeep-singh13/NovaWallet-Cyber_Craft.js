@@ -1,13 +1,24 @@
-import React from 'react'
-import {  useNavigate } from 'react-router-dom'
+import React, {useEffect} from 'react'
+import {  useNavigate, useLocation } from 'react-router-dom'
 import Layout from '../components/Layout/Layout';
 import styles from '../css/HomePage.module.css'; // Import the CSS file
 
 const HomePage = () => {
 
+  const location =useLocation();
   const navigate =useNavigate();
+  useEffect(() => {
+    const { hash } = location;
+    if (hash) {
+      const targetElement = document.getElementById(hash.substring(1));
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
   return (
     <Layout>
+      <>
       <div className={styles.wrapper}>
         {/* Creating the main front image banner */}
         <div className={styles.mainviewpage}>
@@ -53,7 +64,7 @@ const HomePage = () => {
         {/* features card */}
         {/* total feature card:4 */}
         {/* feature card number:1 */}
-        <div className={styles.featurecard}>
+        <div id='featurecard1' className={styles.featurecard}>
           <div className={styles.featurebox}>
             <div className={styles.leftimage}>
               <img
@@ -184,7 +195,7 @@ const HomePage = () => {
           <h1>Reviews!!</h1>
         </div>
         {/* Creating testimonilas cards */}
-        <div className={styles.testimonials}>
+        <div id='testimonials' className={styles.testimonials}>
           <div className={styles.cards}>
             <div className={styles.imagename}>
               <img
@@ -279,7 +290,7 @@ const HomePage = () => {
         </div>
         {/* signup window completed */}
         {/* Founder informations */}
-        <div className={styles.testimonials}>
+        <div id='team' className={styles.testimonials}>
           <div className={styles.cards}>
             <div className={styles.imagename}>
               <img
@@ -370,6 +381,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      </>
       </Layout>
   )
 }

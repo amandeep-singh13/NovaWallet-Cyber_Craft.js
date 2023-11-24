@@ -4,6 +4,7 @@ import { message, Dropdown, Button, Switch, Space, Divider, theme } from "antd";
 import { CaretDownOutlined } from '@ant-design/icons'
 const { useToken } = theme;
 
+
 const Header = () => {
   const [loginUser, setLoginUser] = useState("");
   useEffect(() => {
@@ -61,17 +62,17 @@ const Header = () => {
   const homeItems = [
     {
       key: 1,
-      label: <Link style={{ textDecoration: 'none' }} to='/'>Benifits</Link>,
+      label: <Link style={{ textDecoration: 'none' }} to='/#featurecard1'>Benifits</Link>,
 
     },
     {
       key: 2,
-      label: <Link style={{ textDecoration: 'none' }} to='/'>Testimonials</Link>,
+      label: <Link style={{ textDecoration: 'none' }} to='/#testimonials'>Testimonials</Link>,
     },
 
     {
       key: 3,
-      label: <Link style={{ textDecoration: 'none' }} to='/'>About Us</Link>,
+      label: <Link style={{ textDecoration: 'none' }} to='/#team'>About Us</Link>,
     },
 
   ];

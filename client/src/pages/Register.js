@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from '../css/Signup.module.css' // Import the styles
 import axios from 'axios';
 import Spinner from '../components/Spinner';
+import Layout from '../components/Layout/Layout';
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -29,7 +30,7 @@ const Register = () => {
     }
   }, [navigate]);
   return (
-    <>
+    <Layout>
       
       <div className={styles.container}>
         <div className={`${styles.form} show-signup`}>
@@ -99,7 +100,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

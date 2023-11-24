@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../css/FAQPage.module.css'; // Import the CSS file
 import { Collapse } from 'antd';
+import Layout from '../components/Layout/Layout'
 
 const FAQPage = () => {
   const items = [
@@ -176,7 +177,7 @@ const FAQPage = () => {
     }
   ]
   return (
-
+    <Layout>
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <h1 className={styles.heading}>Frequently Asked Questions (FAQs)</h1>
@@ -189,6 +190,7 @@ const FAQPage = () => {
         </div>
       </div>
     </div>
+    </Layout>
   );
 }
 
