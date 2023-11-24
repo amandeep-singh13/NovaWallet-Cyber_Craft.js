@@ -136,7 +136,7 @@ const Header = () => {
                   menu={{
                     items: homeItems,
                   }}>
-                  <div style={{fontSize: '18px'}}>Home</div>
+                  <div style={{fontSize: '18px',color: Theme=== 'dark'? '#ffffff': '#000000'}}>Home</div>
                 </Dropdown.Button>
               </li>
               <li className="nav-item mt-2">
@@ -147,7 +147,7 @@ const Header = () => {
                   menu={{
                     items: featureItems,
                   }}>
-                  <div style={{fontSize: '18px'}}>Features</div>
+                  <div style={{fontSize: '18px',color: Theme === 'dark'? '#ffffff': '#000000'}}>Features</div>
                 </Dropdown.Button>
               </li>
               <li className="nav-item mt-2">
@@ -157,7 +157,7 @@ const Header = () => {
                   menu={{
                     items: helpItems,
                   }}>
-                  <div style={{fontSize: '18px'}}>Help Desk</div>
+                  <div style={{fontSize: '18px',color: Theme === 'dark'? '#ffffff': '#000000'}}>Help Desk</div>
                 </Dropdown.Button>
               </li>
               <li className="nav-item mt-2">
@@ -194,7 +194,7 @@ const Header = () => {
                   )}
                   trigger={['click']}>
                   <Button type="link">
-                    <div style={{fontSize: '18px'}}>{loginUser ? loginUser.name : 'Signin'}</div>
+                    <div style={{fontSize: '18px',color:Theme=== 'dark' ? '#ffffff': '#000000'}}>{loginUser ? loginUser.name : 'Signin'}</div>
                   </Button>
                 </Dropdown>
               </li>

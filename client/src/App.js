@@ -35,22 +35,21 @@ function App() {
           } />
           <Route
           path='/features'
-          element={<ProtectedRoutes>
+          element={
             <ThemeProvider>
             <Features />
             </ThemeProvider>
-          </ProtectedRoutes>
           } />
           <Route 
           path = '/transactions' 
           element={
             <Transactions/>
           }/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/contact' element={<ContactUsPage />} /> 
-        <Route path='/faq' element={<FAQPage />} />
+        <Route path="/dashboard" element={<ThemeProvider><Dashboard/></ThemeProvider>}/>
+        <Route path='/register' element={<ThemeProvider><Register /></ThemeProvider>} />
+        <Route path='/login' element={<ThemeProvider><Login/></ThemeProvider>} />
+        <Route path='/contact' element={<ThemeProvider><ContactUsPage/></ThemeProvider>} /> 
+        <Route path='/faq' element={<ThemeProvider><FAQPage/></ThemeProvider>} />
       </Routes>
     </>
   );

@@ -11,7 +11,7 @@ const Features = () => {
     <Layout>
       <div
         style={{
-          backgroundImage: Theme==='dark' ? 'none' :
+          backgroundImage: Theme==='dark' ? '#000000' :
             "linear-gradient(to right,rgb(243, 233, 234),rgb(95, 95, 255))",
           overflow: "auto"
         }}
