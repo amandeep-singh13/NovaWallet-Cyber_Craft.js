@@ -9,6 +9,7 @@ import ContactUsPage from './pages/ContactUsPage';
 import FAQPage from './pages/FAQPage';
 import Bill from './pages/Bill'
 import AddBillForm from './pages/AddBill';
+import Dashboard from './pages/DashBoard';
 import {ThemeProvider} from './context/themeContext'
 function App() {
   const [bills,setBills] = useState([]);
@@ -45,6 +46,7 @@ function App() {
           element={
             <Transactions/>
           }/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/contact' element={<ContactUsPage />} /> 

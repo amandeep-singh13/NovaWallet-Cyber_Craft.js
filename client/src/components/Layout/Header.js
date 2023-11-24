@@ -111,7 +111,7 @@ const Header = () => {
           <Link className="navbar-brand" to="/">
             <img src="./images/expenses.png" alt="..." width="30px;" />
           </Link>
-          <Link className={`navbar-brand ${Theme === 'dark' ? 'text-light' : 'text-dark'}`} to="/">
+          <Link className={`navbar-brand ${Theme === 'dark' ? 'text-light' : 'text-dark'}`} to="/" style={{fontSize:'24px'}}>
             NovaWallet
           </Link>
           <button
@@ -136,7 +136,7 @@ const Header = () => {
                   menu={{
                     items: homeItems,
                   }}>
-                  <div>Home</div>
+                  <div style={{fontSize: '18px'}}>Home</div>
                 </Dropdown.Button>
               </li>
               <li className="nav-item mt-2">
@@ -147,7 +147,7 @@ const Header = () => {
                   menu={{
                     items: featureItems,
                   }}>
-                  <div>Features</div>
+                  <div style={{fontSize: '18px'}}>Features</div>
                 </Dropdown.Button>
               </li>
               <li className="nav-item mt-2">
@@ -157,7 +157,7 @@ const Header = () => {
                   menu={{
                     items: helpItems,
                   }}>
-                  <div>Help Desk</div>
+                  <div style={{fontSize: '18px'}}>Help Desk</div>
                 </Dropdown.Button>
               </li>
               <li className="nav-item mt-2">
@@ -194,7 +194,7 @@ const Header = () => {
                   )}
                   trigger={['click']}>
                   <Button type="link">
-                    <div>{loginUser ? loginUser.name : 'Signin'}</div>
+                    <div style={{fontSize: '18px'}}>{loginUser ? loginUser.name : 'Signin'}</div>
                   </Button>
                 </Dropdown>
               </li>
