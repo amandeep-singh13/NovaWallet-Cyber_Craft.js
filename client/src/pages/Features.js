@@ -6,7 +6,7 @@ import Layout from '../components/Layout/Layout'
 const Features = () => {
   
   return (
-    <>
+    <Layout>
       <div
         style={{
           backgroundImage:
@@ -100,7 +100,7 @@ const Features = () => {
         {/* features card end */}
       </div>
 
-    </>
+    </Layout>
   )
 }
 

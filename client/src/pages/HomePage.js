@@ -1,29 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React from 'react'
+import {  useNavigate } from 'react-router-dom'
 import Layout from '../components/Layout/Layout';
 import styles from '../css/HomePage.module.css'; // Import the CSS file
 
 const HomePage = () => {
-  const [loginUser, setLoginUser] = useState('')
-  const navigate = useNavigate(); // Access the navigate function
 
-  const handleLogout = () => {
-    // Perform logout logic here
-    // For example, remove the user from localStorage and reset the state
-    localStorage.removeItem('user');
-    setLoginUser('');
-    navigate('/login');
-  };
-  const handleLogin = () => {
-    // Navigate to the login page
-    navigate('/login');
-  };
-
-  const handleSignup = () => {
-    // Navigate to the signup page
-    navigate('/register');
-  };
-
+  const navigate =useNavigate();
   return (
     <Layout>
       <div className={styles.wrapper}>
