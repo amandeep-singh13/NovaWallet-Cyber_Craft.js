@@ -194,7 +194,7 @@ const Transactions = () => {
             case 'linechart':
                 return <LineChart />;
             case 'piechart':
-                return <PieChart />;
+                return <PieChart allTransactions={allTransactions}/>;
 
             default:
                 return null; // or a default component if no match

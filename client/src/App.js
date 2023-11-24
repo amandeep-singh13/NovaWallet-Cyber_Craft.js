@@ -39,9 +39,9 @@ function App() {
           } />
           <Route 
           path = '/transactions' 
-          element={<ProtectedRoutes>
+          element={
             <Transactions/>
-          </ProtectedRoutes>}/>
+          }/>
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/contact' element={<ContactUsPage />} /> 
