@@ -1,15 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../components/Layout/Layout'
+import {useTheme} from '../context/themeContext'
 
 
 const Features = () => {
+  const {Theme} =useTheme();
   
   return (
     <Layout>
       <div
         style={{
-          backgroundImage:
+          backgroundImage: Theme==='dark' ? 'none' :
             "linear-gradient(to right,rgb(243, 233, 234),rgb(95, 95, 255))",
           overflow: "auto"
         }}
@@ -21,10 +23,10 @@ const Features = () => {
             <div className="container text-center my-5">
               <h1 className="text-capitalize"> how we can help you ??</h1>
               <div className="h-25 my-4">
-                <button type="button" className="btn btn-dark">
+                <button type="button" className="mx-2 btn btn-dark">
                   Get Started
                 </button>
-                <button type="button" className="btn btn-light">
+                <button type="button" className="mx-2 btn btn-light">
                   Learn More
                 </button>
               </div>
@@ -87,7 +89,7 @@ const Features = () => {
                   <h5 className="card-title">Split Bills</h5>
                   <p className="card-text">
                     With the "Split Expenses with Family and Friends" feature, you can
-                    nurture your relationships without the financial stress.{" "}
+                    nurture your relationships without any financial stress or strain.{" "}
                   </p>
                   <Link to="/" className="btn btn-dark">
                     Read More

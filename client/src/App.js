@@ -9,6 +9,7 @@ import ContactUsPage from './pages/ContactUsPage';
 import FAQPage from './pages/FAQPage';
 import Bill from './pages/Bill'
 import AddBillForm from './pages/AddBill';
+import {ThemeProvider} from './context/themeContext'
 function App() {
   const [bills,setBills] = useState([]);
   const handleAddBill = (newBill) => {
@@ -29,12 +30,14 @@ function App() {
         <Route
           path='/'
           element={
-            <HomePage />
+           <ThemeProvider><HomePage /></ThemeProvider> 
           } />
           <Route
           path='/features'
           element={<ProtectedRoutes>
+            <ThemeProvider>
             <Features />
+            </ThemeProvider>
           </ProtectedRoutes>
           } />
           <Route 

@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { message, Dropdown, Button, Switch, Space, Divider, theme } from "antd";
 import { CaretDownOutlined } from '@ant-design/icons'
+import {useTheme} from '../../context/themeContext'
 const { useToken } = theme;
 
-
 const Header = () => {
+  const { Theme, toggleTheme } = useTheme();
+
   const [loginUser, setLoginUser] = useState("");
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -39,7 +41,7 @@ const Header = () => {
     },
     {
       key: 2,
-      label: <Switch defaultChecked checkedChildren='Light Mode On' unCheckedChildren='Dark Mode On'/>,
+      label: <Switch defaultChecked={() => {return(Theme==='light')}} checkedChildren='Light Mode On' unCheckedChildren='Dark Mode On' on onChange={toggleTheme}/>,
     },
 
   ];
@@ -104,12 +106,12 @@ const Header = () => {
   
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-light">
+      <nav className={`navbar navbar-expand-lg ${Theme === 'dark' ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`}>
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             <img src="./images/expenses.png" alt="..." width="30px;" />
           </Link>
-          <Link className="navbar-brand" to="/">
+          <Link className={`navbar-brand ${Theme === 'dark' ? 'text-light' : 'text-dark'}`} to="/">
             NovaWallet
           </Link>
           <button
