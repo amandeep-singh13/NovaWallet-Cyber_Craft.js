@@ -19,14 +19,14 @@ function App() {
   return (
     <>
       <Routes>
-      <Route path="/Bills" element={<BillList bills={bills} />} />
+      <Route path="/Bills" element={<ProtectedRoutes><ThemeProvider><BillList bills={bills} /></ThemeProvider></ProtectedRoutes>} />
       <Route
         path="/AddBill"
-        element={<AddBillForm onAddBill={handleAddBill} />}
+        element={<ProtectedRoutes><ThemeProvider><AddBillForm onAddBill={handleAddBill} /></ThemeProvider></ProtectedRoutes>}
       />
         
         
-        <Route path="/Bill" element ={<Bill/>}></Route>
+        <Route path="/Bill" element ={<ProtectedRoutes><ThemeProvider><Bill/></ThemeProvider></ProtectedRoutes>}></Route>
 
         <Route
           path='/'
@@ -36,16 +36,19 @@ function App() {
           <Route
           path='/features'
           element={
+            <ProtectedRoutes>
             <ThemeProvider>
             <Features />
             </ThemeProvider>
+            </ProtectedRoutes>
           } />
           <Route 
           path = '/transactions' 
           element={
-            <Transactions/>
+            <ProtectedRoutes><ThemeProvider><Transactions/></ThemeProvider></ProtectedRoutes>
+            
           }/>
-        <Route path="/dashboard" element={<ThemeProvider><Dashboard/></ThemeProvider>}/>
+        <Route path="/dashboard" element={<ProtectedRoutes><ThemeProvider><Dashboard/></ThemeProvider></ProtectedRoutes>}/>
         <Route path='/register' element={<ThemeProvider><Register /></ThemeProvider>} />
         <Route path='/login' element={<ThemeProvider><Login/></ThemeProvider>} />
         <Route path='/contact' element={<ThemeProvider><ContactUsPage/></ThemeProvider>} /> 

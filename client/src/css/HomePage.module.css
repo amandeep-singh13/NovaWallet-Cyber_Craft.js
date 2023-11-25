@@ -8,6 +8,11 @@
     background-image: linear-gradient(to right,rgb(243, 233, 234),rgb(95, 95, 255));
     overflow-x: hidden;
 }
+.dark{
+    position: relative;
+    background-image: linear-gradient(to right,rgb(67, 67, 67),rgb(67, 67, 67));
+    overflow-x: hidden;
+}
 .topbar{
     height: 40px;
     width: 100vw;

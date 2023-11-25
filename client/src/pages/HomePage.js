@@ -6,6 +6,7 @@ import {useTheme} from '../context/themeContext'
 
 const HomePage = () => {
   const {Theme} =useTheme();
+  const containerClass = `${Theme==='dark' ? styles.dark : styles.wrapper}`
 
   const location =useLocation();
   const navigate =useNavigate();
@@ -20,14 +21,7 @@ const HomePage = () => {
   }, [location]);
   return (
     <Layout>
-      <div
-        style={{
-          backgroundImage: Theme==='dark' ? 'linear-gradient(to right, #000000, #000000)' :
-            "linear-gradient(to right,rgb(243, 233, 234),rgb(95, 95, 255))",
-          overflow: "auto"
-        }}
-      >
-      <div className={styles.wrapper}>
+      <div className={containerClass}>
         {/* Creating the main front image banner */}
         <div className={styles.mainviewpage}>
           <div className={styles.content}>
@@ -388,7 +382,6 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </div>
       </div>
       </Layout>
   )

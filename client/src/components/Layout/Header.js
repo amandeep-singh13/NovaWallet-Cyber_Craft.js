@@ -35,7 +35,7 @@ const Header = () => {
   const profileItems = [
     {
       key: 1,
-      label: <Link style={{ textDecoration: 'none' }} to='/'>Dashboard</Link>,
+      label: <Link style={{ textDecoration: 'none' }} to='/dashboard'>Dashboard</Link>,
       disabled: !loginUser
 
     },
@@ -53,11 +53,11 @@ const Header = () => {
     },
     {
       key: 2,
-      label: <Link style={{ textDecoration: 'none' }} to='/'>Manage Due Payments</Link>,
+      label: <Link style={{ textDecoration: 'none' }} to='/Bill'>Manage Due Payments</Link>,
     },
     {
       key: 3,
-      label: <Link style={{ textDecoration: 'none' }} to='/'>Split Bills</Link>,
+      label: <Link style={{ textDecoration: 'none' }} to='/Bills'>Split Bills</Link>,
     },
 
   ];
